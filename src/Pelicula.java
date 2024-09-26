@@ -18,9 +18,28 @@ public class Pelicula implements Comparable<Pelicula> {
     private double profit;
     private double mes;
     private double profit_Margin;
+    private double popularity;
+    private double roi;
+
+    // populariy, profit, roi, budget
+    
+    public double getBudget(){
+        return this.production_budget;
+    }
+
+    public double getPopularity(){
+        return this.popularity;
+    }
+    
+    public double getProfit(){
+        return this.profit;
+    }
+    public double getRoi(){
+        return this.roi;
+    }
     
     public Pelicula(String titulo, int year,double production_budget, double domesticGross, double foreign_Gross, double worldwide_Gross,
-    double profit, double mes, double profin_Margin) {
+    double profit, double mes, double profin_Margin, double popularity, double roi;) {
         this.titulo = titulo;
         this.year = year;
         this.production_budget=production_budget;
@@ -30,6 +49,8 @@ public class Pelicula implements Comparable<Pelicula> {
         this.profit = profit;
         this.mes = mes;
         this.profit_Margin = profin_Margin;
+        this.popularity=popularity;
+        this.roi=roi;
     }
 
     @Override
@@ -91,4 +112,37 @@ El uso de Math.min(M, peliculas.size()) asegura que no intentemos acceder a más
  Si M es mayor que el tamaño de la lista, simplemente devuelve todas las películas disponibles.
          */
     }
+}
+
+public class PopulariyComparator implements Comparator<Pelicula> {
+
+    @Override
+    public int compare(Pelicula primeraPeli, Pelicula segundaPeli) {
+       return Integer.compare(primeraPeli.getPopularity(), segundaPeli.getPopularity());
+    }
+
+}
+public class BudgetComparator implements Comparator<Pelicula> {
+
+    @Override
+    public int compare(Pelicula primeraPeli, Pelicula segundaPeli) {
+       return Integer.compare(primeraPeli.getBudget(), segundaPeli.getBudget());
+    }
+
+}
+public class RoiComparator implements Comparator<Pelicula> {
+
+    @Override
+    public int compare(Pelicula primeraPeli, Pelicula segundaPeli) {
+       return Integer.compare(primeraPeli.getRoi(), segundaPeli.getRoi());
+    }
+
+}
+public class ProfitComparator implements Comparator<Pelicula> {
+
+    @Override
+    public int compare(Pelicula primeraPeli, Pelicula segundaPeli) {
+       return Integer.compare(primeraPeli.getProfit(), segundaPeli.getProfit());
+    }
+
 }

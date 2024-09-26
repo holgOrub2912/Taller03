@@ -57,6 +57,11 @@ public class Pelicula implements Comparable<Pelicula> {
     public int compareTo(Pelicula o) {
         return Integer.compare(this.year, o.year);
     }
+
+    @Override
+    public String toString(){
+        return String.format("%s (%d)", this.titulo, this.year);
+    }
     
     public static List<Pelicula> leerPelisdeCSV(String ruta_archivoCSV)throws IOException{
 

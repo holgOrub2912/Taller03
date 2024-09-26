@@ -67,12 +67,15 @@ public class Pelicula implements Comparable<Pelicula> {
 
         String titulo;
         int year;
+        double production_budget;
         double domestic_Gross;
         double foreign_Gross;
         double worldwide_Gross;
         double mes;
         double profit;
         double profit_Margin;
+        double popularity;
+        double roi;
         Pelicula peliAgregar;
 
         List<Pelicula> peliculas = new ArrayList<>();
@@ -85,17 +88,23 @@ public class Pelicula implements Comparable<Pelicula> {
         
 
         while ((linea=datos.readLine()) != null) {
-            String[] campos = linea.split(","); 
-            titulo= campos[0];
-            year=Integer.parseInt(campos[1]);
-            domestic_Gross= Double.parseDouble(campos[2]);
-            foreign_Gross=Double.parseDouble(campos[3]);
-            worldwide_Gross=Double.parseDouble(campos[4]);
-            mes= Double.parseDouble(campos[5]);
-            profit=Double.parseDouble(campos[6]);
-            profit_Margin=Double.parseDouble(campos[7]);
+            // regex tomada de https://stackoverflow.com/questions/15738918/splitting-a-csv-file-with-quotes-as-text-delimiter-using-string-split
+            String[] campos = linea.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)"); 
+            titulo= campos[1];
+            year=Integer.parseInt(campos[2]);
+            production_budget=Integer.parseInt(campos[3]);
+            domestic_Gross= Double.parseDouble(campos[4]);
+            foreign_Gross=Double.parseDouble(campos[5]);
+            worldwide_Gross=Double.parseDouble(campos[6]);
+            mes= Double.parseDouble(campos[7]);
+            profit=Double.parseDouble(campos[8]);
+            profit_Margin = !campos[9].equals("-inf")
+                ? Double.parseDouble(campos[9])
+                : Double.NEGATIVE_INFINITY;
+            roi = Double.parseDouble(campos[10]);
+            popularity = Double.parseDouble(campos[13]);
 
-            peliAgregar= new Pelicula(titulo, year, year, domestic_Gross, foreign_Gross, worldwide_Gross, profit_Margin, mes, profit);
+            peliAgregar= new Pelicula(titulo, year, production_budget, domestic_Gross, foreign_Gross, worldwide_Gross, profit, mes, profit_Margin, popularity, roi);
             peliculas.add(peliAgregar);
 
         }

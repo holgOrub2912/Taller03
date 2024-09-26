@@ -39,7 +39,7 @@ public class Pelicula implements Comparable<Pelicula> {
     }
     
     public Pelicula(String titulo, int year,double production_budget, double domesticGross, double foreign_Gross, double worldwide_Gross,
-    double profit, double mes, double profin_Margin, double popularity, double roi;) {
+    double profit, double mes, double profin_Margin, double popularity, double roi) {
         this.titulo = titulo;
         this.year = year;
         this.production_budget=production_budget;

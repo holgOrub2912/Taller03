@@ -118,7 +118,7 @@ public class PopulariyComparator implements Comparator<Pelicula> {
 
     @Override
     public int compare(Pelicula primeraPeli, Pelicula segundaPeli) {
-       return Integer.compare(primeraPeli.getPopularity(), segundaPeli.getPopularity());
+       return Double.compare(primeraPeli.getPopularity(), segundaPeli.getPopularity());
     }
 
 }
@@ -126,7 +126,7 @@ public class BudgetComparator implements Comparator<Pelicula> {
 
     @Override
     public int compare(Pelicula primeraPeli, Pelicula segundaPeli) {
-       return Integer.compare(primeraPeli.getBudget(), segundaPeli.getBudget());
+       return Double.compare(primeraPeli.getBudget(), segundaPeli.getBudget());
     }
 
 }
@@ -134,7 +134,8 @@ public class RoiComparator implements Comparator<Pelicula> {
 
     @Override
     public int compare(Pelicula primeraPeli, Pelicula segundaPeli) {
-       return Integer.compare(primeraPeli.getRoi(), segundaPeli.getRoi());
+       return Double.compare(primeraPeli.getRoi(), segundaPeli.getRoi());
+       
     }
 
 }
@@ -142,7 +143,7 @@ public class ProfitComparator implements Comparator<Pelicula> {
 
     @Override
     public int compare(Pelicula primeraPeli, Pelicula segundaPeli) {
-       return Integer.compare(primeraPeli.getProfit(), segundaPeli.getProfit());
+       return Double.compare(primeraPeli.getProfit(), segundaPeli.getProfit());
     }
 
 }

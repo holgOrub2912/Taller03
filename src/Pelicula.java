@@ -127,37 +127,3 @@ El uso de Math.min(M, peliculas.size()) asegura que no intentemos acceder a más
          */
     }
 }
-
-public class PopulariyComparator implements Comparator<Pelicula> {
-
-    @Override
-    public int compare(Pelicula primeraPeli, Pelicula segundaPeli) {
-       return Double.compare(primeraPeli.getPopularity(), segundaPeli.getPopularity());
-    }
-
-}
-public class BudgetComparator implements Comparator<Pelicula> {
-
-    @Override
-    public int compare(Pelicula primeraPeli, Pelicula segundaPeli) {
-       return Double.compare(primeraPeli.getBudget(), segundaPeli.getBudget());
-    }
-
-}
-public class RoiComparator implements Comparator<Pelicula> {
-
-    @Override
-    public int compare(Pelicula primeraPeli, Pelicula segundaPeli) {
-       return Double.compare(primeraPeli.getRoi(), segundaPeli.getRoi());
-       
-    }
-
-}
-public class ProfitComparator implements Comparator<Pelicula> {
-
-    @Override
-    public int compare(Pelicula primeraPeli, Pelicula segundaPeli) {
-       return Double.compare(primeraPeli.getProfit(), segundaPeli.getProfit());
-    }
-
-}

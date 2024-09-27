@@ -41,6 +41,12 @@ public class Pelicula implements Comparable<Pelicula> {
     public double getRoi(){
         return this.roi;
     }
+    public int getYear(){
+		return this.year;
+    }
+    public String getTitulo(){
+		return this.titulo;
+    }
     
     public Pelicula(String titulo, int year, int production_budget, double domestic_Gross, double foreign_Gross,
     double worldwide_Gross,int mes, double profit, double profit_Margin, double roi, double pct_foreign, String match_key,

@@ -9,22 +9,21 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 class GraficoAnimado {
-	public static void updateDataset(DefaultCategoryDataset dataset, Method criterio, List<Pelicula> pelis, int uptoYear) throws IllegalAccessException,InvocationTargetException{
+	public static void updateDataset(DefaultCategoryDataset dataset, ComparadorPelicula cmp, List<Pelicula> pelis, int uptoYear){
 		int i = pelis.size();
 		while ( pelis.get(--i).getYear() > uptoYear ) ;;
 		dataset.clear();
-		for (Pelicula p: Pelicula.topMPeliculas( pelis.subList(0,i+1), 10,
-		     new GenericPeliculaComparator(criterio)))
-            dataset.setValue((double) criterio.invoke(p), criterio.getName(), p.getTitulo());
+		for ( Pelicula p: Pelicula.topMPeliculas(pelis.subList(0,i+1), 10, cmp) )
+            dataset.setValue(cmp.getValue(p), cmp.getCriterionName(), p.getTitulo());
 	}
-	public static void grafico(List<Pelicula> pelis, Method criterio) throws InterruptedException,IllegalAccessException,InvocationTargetException {
+
+	public static void grafico(List<Pelicula> pelis, ComparadorPelicula cmp) throws InterruptedException {
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-		GenericPeliculaComparator comparador = new GenericPeliculaComparator(criterio);
 		pelis.sort(Comparator.naturalOrder());
 		
 		JFreeChart chart = ChartFactory.createBarChart(
-			"Sample Bar Chart",
-			criterio.getName(),
+			"Top 10 películas por " + cmp.getCriterionName(),
+			cmp.getCriterionName(),
 			"Score",
 			dataset,
 			PlotOrientation.VERTICAL,
@@ -37,8 +36,7 @@ class GraficoAnimado {
 		for (int year = pelis.get(0).getYear();
         		year <= pelis.get(pelis.size()-1).getYear();
         		year++){
-            updateDataset(dataset, criterio, pelis, year);
-            System.out.println("year: " + year);
+            updateDataset(dataset, cmp, pelis, year);
             Thread.sleep(200);
 		}
 	}

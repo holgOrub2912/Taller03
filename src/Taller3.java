@@ -1,5 +1,6 @@
 import edu.princeton.cs.algs4.*;
 import java.util.List;
+import java.util.InputMismatchException;
 
 public class Taller3 {
 
@@ -33,7 +34,16 @@ public class Taller3 {
             System.out.println(p);
         */
         List<Pelicula> lista_pelis = Pelicula.leerPelisdeCSV(RUTA_CSV);
-        // GraficoAnimado.grafico(lista_pelis, Pelicula.class.getMethod("getPopularity"));
-        GraficoAnimado.grafico(lista_pelis, menuComparadorPelicula());
+		int m;
+		do {
+			System.out.print("¿Cuántas películas quieres mostrar a la vez? ");
+			try {
+				m = StdIn.readInt();
+				break;
+			} catch(InputMismatchException e) {
+				System.out.println("Valor inválido.");
+			}
+		} while (true);
+        GraficoAnimado.grafico(m, lista_pelis, menuComparadorPelicula());
     }
 }

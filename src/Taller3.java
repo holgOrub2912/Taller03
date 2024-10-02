@@ -1,3 +1,4 @@
+/* AUTORES: Isabela Arrubla Orozco, Fernando González Rivero */
 import edu.princeton.cs.algs4.*;
 import java.util.List;
 import java.util.InputMismatchException;

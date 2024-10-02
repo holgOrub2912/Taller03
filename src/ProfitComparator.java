@@ -1,3 +1,4 @@
+/* AUTORES: Isabela Arrubla Orozco, Fernando González Rivero */
 public class ProfitComparator implements ComparadorPelicula {
 
     @Override

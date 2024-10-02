@@ -1,3 +1,4 @@
+/* AUTORES: Isabela Arrubla Orozco, Fernando González Rivero */
 public class PopularityComparator implements ComparadorPelicula {
 
     @Override

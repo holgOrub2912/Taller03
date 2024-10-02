@@ -1,3 +1,4 @@
+/* AUTORES: Isabela Arrubla Orozco, Fernando González Rivero */
 public class RoiComparator implements ComparadorPelicula {
 
     @Override

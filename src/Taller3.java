@@ -1,6 +1,9 @@
 /* AUTORES: Isabela Arrubla Orozco, Fernando González Rivero */
 import edu.princeton.cs.algs4.*;
 import java.util.List;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.InputMismatchException;
 
 public class Taller3 {
@@ -29,11 +32,6 @@ public class Taller3 {
 	}
 
     public static void main(String[] args) throws Exception {
-        /*
-        for (Pelicula p: Pelicula.topMPeliculas(lista_pelis,
-                         10, new PopularityComparator()))
-            System.out.println(p);
-        */
         List<Pelicula> lista_pelis = Pelicula.leerPelisdeCSV(RUTA_CSV);
 		int m;
 		do {

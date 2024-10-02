@@ -1,6 +1,7 @@
 /* AUTORES: Isabela Arrubla Orozco, Fernando González Rivero */
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.HashSet;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -107,6 +108,7 @@ public class Pelicula implements Comparable<Pelicula> {
         Pelicula peliAgregar;
 
         List<Pelicula> peliculas = new ArrayList<>();
+        HashSet<String> titulos = new HashSet<String>();
         FileReader archivo = new FileReader(ruta_archivoCSV);
         BufferedReader datos = new BufferedReader(archivo);
         String linea;
@@ -119,6 +121,11 @@ public class Pelicula implements Comparable<Pelicula> {
             // regex tomada de https://stackoverflow.com/questions/15738918/splitting-a-csv-file-with-quotes-as-text-delimiter-using-string-split
             String[] campos = linea.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)"); 
             titulo= campos[1];
+            // Evitar repetir películas
+            if (titulos.contains(titulo))
+				continue;
+			else
+				titulos.add(titulo);
             year=Integer.parseInt(campos[2]);
             production_budget= Integer.parseInt(campos[3]);
             domestic_Gross= Double.parseDouble(campos[4]);

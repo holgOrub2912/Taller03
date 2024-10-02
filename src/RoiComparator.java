@@ -1,6 +1,4 @@
-import java.util.Comparator;
-
-public class RoiComparator implements Comparator<Pelicula> {
+public class RoiComparator implements ComparadorPelicula {
 
     @Override
     public int compare(Pelicula primeraPeli, Pelicula segundaPeli) {
@@ -8,4 +6,8 @@ public class RoiComparator implements Comparator<Pelicula> {
        
     }
 
+	@Override
+	public String getCriterionName(){
+		return "Roi";
+	}
 }

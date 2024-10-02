@@ -1,5 +1,3 @@
-import java.util.Comparator;
-
 public class BudgetComparator implements ComparadorPelicula {
 
     @Override
@@ -10,5 +8,10 @@ public class BudgetComparator implements ComparadorPelicula {
 	@Override
 	public String getCriterionName(){
 		return "Presupuesto";
+	}
+
+	@Override
+	public double getValue(Pelicula p){
+		return p.getBudget();
 	}
 }

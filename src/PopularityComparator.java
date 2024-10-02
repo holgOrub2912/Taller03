@@ -9,4 +9,9 @@ public class PopularityComparator implements ComparadorPelicula {
 	public String getCriterionName(){
 		return "Popularidad";
 	}
+
+	@Override
+	public double getValue(Pelicula p){
+		return p.getPopularity();
+	}
 }

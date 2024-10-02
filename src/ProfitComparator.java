@@ -9,4 +9,9 @@ public class ProfitComparator implements ComparadorPelicula {
 	public String getCriterionName(){
 		return "Ganancias";
 	}
+
+	@Override
+	public double getValue(Pelicula p){
+		return p.getProfit();
+	}
 }

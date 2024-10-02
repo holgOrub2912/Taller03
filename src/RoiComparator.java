@@ -10,4 +10,9 @@ public class RoiComparator implements ComparadorPelicula {
 	public String getCriterionName(){
 		return "Roi";
 	}
+
+	@Override
+	public double getValue(Pelicula p){
+		return p.getRoi();
+	}
 }

@@ -9,12 +9,16 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 class GraficoAnimado {
-	public static void updateDataset(DefaultCategoryDataset dataset, ComparadorPelicula cmp, List<Pelicula> pelis, int uptoYear){
+	public static void updateDataset(DefaultCategoryDataset dataset, ComparadorPelicula cmp, List<Pelicula> pelis, int upToYear){
 		int i = pelis.size();
-		while ( pelis.get(--i).getYear() > uptoYear ) ;;
+		while ( pelis.get(--i).getYear() > upToYear ) ;;
 		dataset.clear();
 		for ( Pelicula p: Pelicula.topMPeliculas(pelis.subList(0,i+1), 10, cmp) )
             dataset.setValue(cmp.getValue(p), cmp.getCriterionName(), p.getTitulo());
+	}
+
+	public static String titleBuilder(int m, ComparadorPelicula cmp, int upToYear){
+		return String.format("Top %d películas por %s (hasta %d)", m, cmp.getCriterionName(), upToYear);
 	}
 
 	public static void grafico(List<Pelicula> pelis, ComparadorPelicula cmp) throws InterruptedException {
@@ -24,10 +28,10 @@ class GraficoAnimado {
 		JFreeChart chart = ChartFactory.createBarChart(
 			"Top 10 películas por " + cmp.getCriterionName(),
 			cmp.getCriterionName(),
-			"Score",
+			null,
 			dataset,
 			PlotOrientation.VERTICAL,
-			true, true, false
+			true, true, true
 		);
 
 		ChartFrame frame = new ChartFrame("First", chart);
@@ -37,6 +41,7 @@ class GraficoAnimado {
         		year <= pelis.get(pelis.size()-1).getYear();
         		year++){
             updateDataset(dataset, cmp, pelis, year);
+            chart.setTitle( titleBuilder(10, cmp, year) );
             Thread.sleep(200);
 		}
 	}
